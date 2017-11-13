@@ -7,8 +7,11 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
-
+if [[ $TERM == 'xterm-256color' ]] then
+	ZSH_THEME="agnoster"
+else
+	ZSH_THEME="robbyrussell"
+fi
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -60,6 +63,8 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+
+#[[ $TERM == 'xterm-256color' ]] && source $ZSH/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -92,3 +97,4 @@ export DEFAULT_USER="petergu"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vi="vim --noplugin"

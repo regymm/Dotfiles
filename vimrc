@@ -27,10 +27,13 @@
     Bundle 'Valloric/YouCompleteMe'
     Bundle 'vim-airline/vim-airline'
     Bundle 'vim-airline/vim-airline-themes'
-    Bundle 'Raimondi/delimitMate'
-    Bundle 'luochen1990/rainbow'
+    "Bundle 'Raimondi/delimitMate'
+    "Bundle 'luochen1990/rainbow'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-repeat'
+    Bundle 'Shougo/vimshell.vim'
+    Bundle 'Shougo/vimproc.vim', {'do' : 'make'}
+    Bundle 'jiangmiao/auto-pairs'
     filetype plugin indent on     " required!  
 "------vundle end
 
@@ -38,11 +41,15 @@ set showcmd
 set incsearch
 set nohlsearch
 set autoindent
+set cindent
 set number
 set mouse=i
 set scrolloff=6
 filetype plugin on
+filetype plugin indent on
+filetype on
 
+noremap <leader>sh :VimShellInteractive bash<cr>
 
 "------for airline
 "if !exists('g:airline_symbols')
@@ -79,7 +86,7 @@ function! ToggleErrors()
 			Errors
 	endif
 endfunction
-"nnoremap <Leader>s :call ToggleErrors()<cr>
+nnoremap <Leader>s :call ToggleErrors()<cr>
 "nnoremap <Leader>sn :lnext<cr>
 "nnoremap <Leader>sp :lprevious<cr>
 "------for syntactic end
