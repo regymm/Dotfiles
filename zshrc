@@ -8,9 +8,11 @@
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 if [[ $TERM == 'xterm-256color' ]] then
+	#ZSH_THEME="sobole"
 	ZSH_THEME="agnoster"
 else
 	ZSH_THEME="robbyrussell"
+	#ZSH_THEME="sobole"
 fi
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -61,7 +63,11 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+git
+command-not-found
+zsh-syntax-highlighting
+)
 
 
 #[[ $TERM == 'xterm-256color' ]] && source $ZSH/oh-my-zsh.sh
@@ -98,3 +104,6 @@ export DEFAULT_USER="petergu"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="vim --noplugin"
+alias ll="exa -bghHliS"
+#source /home/petergu/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
