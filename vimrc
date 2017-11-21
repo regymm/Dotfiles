@@ -1,3 +1,6 @@
+if has ('nvim')
+    source ./.vim/autoload/plug.vim
+endif
 "------vim-plug begin
 call plug#begin('~/.vim/bundle')
     Plug 'gmarik/vundle'  
@@ -39,9 +42,8 @@ set nohlsearch
 set autoindent
 set cindent
 set number
-set showcmd
 set mouse=i
-set scrolloff=6
+set scrolloff=5
 set nocompatible
 set clipboard+=unnamed
 "set cursorline
@@ -49,7 +51,6 @@ filetype plugin indent on
 
 "autocmd FileType c,cpp source '~/.vim/cvim/plugin/c.vim'
 "failed
-noremap <leader>bash :VimShellInteractive bash<cr>
 noremap <leader>sh :VimShell<cr>
 
 ""c/cpp compile if &filetype=="c"
@@ -65,13 +66,17 @@ noremap <leader>sh :VimShell<cr>
 "if !exists('g:airline_symbols')
 "let g:airline_symbols = {}
 "endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-"a strange symbol, isn't it?
-let g:airline#extensions#tabline#left_alt_sep = ''
+"let g:airline#extensions#tabline#left_sep = ''
+"strange symbols, isn't it?
+"let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <Leader>1 <Plug>AirlineSelectTab1
 nmap <Leader>2 <Plug>AirlineSelectTab2
@@ -157,4 +162,5 @@ let g:rainbow_active = 0
 "    Bundle 'jiangmiao/auto-pairs'
 "    filetype plugin indent on     " required!  
 ""------vundle end
+set showcmd
 
