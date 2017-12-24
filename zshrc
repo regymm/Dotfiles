@@ -104,6 +104,26 @@ export DEFAULT_USER="petergu"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="vim --noplugin"
-alias ll="exa -bghHliS"
+alias nvi="nvim --noplugin"
+alias lll="ls -al"
+alias lll="exa -bghHliS"
 #source /home/petergu/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+function s(){
+    local spath="/usr/local/bin/s" # 可用 which s 查看
+    if [[ ${1:0:1} != '-' ]]
+    then
+        $spath $* | less 
+    else
+        $spath $*
+    fi
+}
+alias s='echo -ne '\n'|s'
+alias matcmd='matlab -nodisplay -nosplash -nojvm'
+alias killwine='pkill .exe; pkill wine'
+export LC_TIME="en_US.UTF-8"
+export XIM="fcitx"
+export XIM_PROGRAM="fcitx"
+export XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
