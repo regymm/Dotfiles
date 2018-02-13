@@ -12,25 +12,26 @@ call plug#begin('~/.vim/bundle')
     " I don't know what they are...(above this comment)
     "Plug 'bash-support.vim' 
     "may be some problem
-    Plug 'Valloric/YouCompleteMe'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'Valloric/YouCompleteMe'
     Plug 'scrooloose/nerdtree'
-    Plug 'scrooloose/syntastic'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'terryma/vim-expand-region'
+    Plug 'scrooloose/syntastic'
+    "Plug 'terryma/vim-expand-region'
     Plug 'terryma/vim-multiple-cursors'
+    Plug 'terryma/vim-smooth-scroll'
     Plug 'lilydjwg/fcitx.vim'
     Plug 'Yggdroot/indentLine'
+    Plug '~/.fzf'
 call plug#end()
 "------vim-plug end
 
 set showcmd
 set incsearch
-set nohlsearch
 set autoindent
 set cindent
 set number
@@ -40,9 +41,26 @@ set nocompatible
 set clipboard+=unnamed
 set background=dark
 "set cursorline
+set fileencodings=ucs-bom,gb18030,utf-8,utf-16,gbk,big5,latin1
 filetype plugin indent on
 nnoremap <leader>h :set hlsearch!<cr>
 nnoremap <leader>sp :set spell!<cr>
+nnoremap <leader>ig :set ignorecase!<cr>
+nnoremap <leader>ma :set mouse=a<cr>
+nnoremap <leader>mi :set mouse=i<cr>
+nnoremap <leader>mm :set mouse=<cr>
+
+inoremap <c-n> <down>
+inoremap <c-p> <up>
+inoremap <c-b> <left>
+inoremap <c-f> <right>
+inoremap <c-a> <c-o>0
+inoremap <c-e> <c-o>$
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 "autocmd FileType c,cpp source '~/.vim/cvim/plugin/c.vim'
 "failed
@@ -56,16 +74,16 @@ noremap <leader>rt :!./%< < %<.txt<cr>
 "if !exists('g:airline_symbols')
 "let g:airline_symbols = {}
 "endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-"strange symbols, isn't it?
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"strange symbols, isn't it?
 nmap <Leader>1 <Plug>AirlineSelectTab1
 nmap <Leader>2 <Plug>AirlineSelectTab2
 nmap <Leader>3 <Plug>AirlineSelectTab3
@@ -101,13 +119,18 @@ function! ToggleErrors()
 	endif
 endfunction
 nnoremap <Leader>ss :call ToggleErrors()<cr>
-nnoremap <Leader>sn :lnext<cr>
-nnoremap <Leader>sp :lprevious<cr>
+"nnoremap <Leader>sn :lnext<cr>
+"nnoremap <Leader>sp :lprevious<cr>
 "------for syntactic end
 
 "------for nerdtree
 nnoremap <leader>t :NERDTreeToggle<CR>
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabFree()) | q | endif
 "------for nerdtree end
+"------for multicursor
+"let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<c-n>'
+let g:multi_cursor_prev_key='<c-p>'
+"------for multicursor end
 set showcmd
 

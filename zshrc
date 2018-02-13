@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-if [[ $TERM == 'xterm-256color' ]] then
+if [[ $TERM == *256color ]] then
 	#ZSH_THEME="sobole"
 	ZSH_THEME="agnoster"
 else
@@ -107,10 +107,11 @@ alias vi="vim --noplugin"
 alias nvi="nvim --noplugin"
 alias lll="ls -al"
 alias lll="exa -bghHliS"
+alias nha="~/Python/nha/main.py"
 #source /home/petergu/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 function s(){
-    local spath="/usr/local/bin/s" # 可用 which s 查看
+    local spath="/usr/local/bin/s"
     if [[ ${1:0:1} != '-' ]]
     then
         $spath $* | less 
@@ -119,11 +120,15 @@ function s(){
     fi
 }
 alias s='echo -ne '\n'|s'
+
 alias matcmd='matlab -nodisplay -nosplash -nojvm'
-alias killwine='pkill .exe; pkill wine'
+alias zh='source ~petergu/Widgets/zh.sh'
+export WINEDEBUG=-all
 export LC_TIME="en_US.UTF-8"
 export XIM="fcitx"
 export XIM_PROGRAM="fcitx"
 export XMODIFIERS="@im=fcitx"
 export GTK_IM_MODULE="fcitx"
 export QT_IM_MODULE="fcitx"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
