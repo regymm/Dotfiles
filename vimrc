@@ -129,8 +129,8 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 "------for nerdtree end
 "------for multicursor
 "let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<c-n>'
-let g:multi_cursor_prev_key='<c-p>'
+let g:multi_cursor_next_key='<c-m>'
+let g:multi_cursor_prev_key='<c-l>'
 "------for multicursor end
 set showcmd
 

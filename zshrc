@@ -9,7 +9,10 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 if [[ $TERM == *256color ]] then
 	#ZSH_THEME="sobole"
+	#murilasso
+	#simonoff
 	ZSH_THEME="agnoster"
+	#ZSH_THEME="random"
 else
 	ZSH_THEME="robbyrussell"
 	#ZSH_THEME="sobole"
@@ -105,8 +108,8 @@ export DEFAULT_USER="petergu"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="vim --noplugin"
 alias nvi="nvim --noplugin"
-alias lll="ls -al"
-alias lll="exa -bghHliS"
+alias ll="ls -alh"
+alias lll="exa -abghHliS"
 alias nha="~/Python/nha/main.py"
 #source /home/petergu/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -123,6 +126,22 @@ alias s='echo -ne '\n'|s'
 
 alias matcmd='matlab -nodisplay -nosplash -nojvm'
 alias zh='source ~petergu/Widgets/zh.sh'
+alias pg='watch -n 1 progress'
+#alias note='nvim ~petergu/Widgets/news.txt'
+function note(){
+	local notepath="/home/petergu/Widgets"
+	local notefile="news.txt"
+	local edit="nvim"
+	mv -f "$notepath/$notefile" "$notepath/.$notefile.tmp"
+	if [[ "$1" == "d" ]]
+	then
+		date > "$notepath/$notefile"
+	fi
+	cat "$notepath/.$notefile.tmp" >> "$notepath/$notefile"
+	#rm "$notepath/.$notefile.tmp"
+	$edit "$notepath/$notefile"
+	
+}
 export WINEDEBUG=-all
 export LC_TIME="en_US.UTF-8"
 export XIM="fcitx"
