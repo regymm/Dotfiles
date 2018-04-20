@@ -2,7 +2,7 @@
  export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/petergu/.oh-my-zsh
+ export ZSH=/home/petergu/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -32,7 +32,7 @@ fi
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+ DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -44,7 +44,7 @@ fi
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
  COMPLETION_WAITING_DOTS="true"
@@ -70,6 +70,7 @@ plugins=(
 git
 command-not-found
 zsh-syntax-highlighting
+lighthouse
 )
 
 
@@ -142,6 +143,8 @@ function note(){
 	$edit "$notepath/$notefile"
 	
 }
+alias dnote='note d'
+alias origin='wine "C:\Program Files (x86)\OriginLab\Origin2017\Origin94.exe"'
 export WINEDEBUG=-all
 export LC_TIME="en_US.UTF-8"
 export XIM="fcitx"
@@ -149,5 +152,8 @@ export XIM_PROGRAM="fcitx"
 export XMODIFIERS="@im=fcitx"
 export GTK_IM_MODULE="fcitx"
 export QT_IM_MODULE="fcitx"
+export vrc="nvim ~/.vimrc"
+export zrc="nvim ~/.zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval `dircolors ~/.dircolors`
