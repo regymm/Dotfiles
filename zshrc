@@ -70,7 +70,7 @@ plugins=(
 git
 command-not-found
 zsh-syntax-highlighting
-lighthouse
+#lighthouse
 )
 
 
@@ -114,18 +114,19 @@ alias lll="exa -abghHliS"
 alias nha="~/Python/nha/main.py"
 #source /home/petergu/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-function s(){
-    local spath="/usr/local/bin/s"
-    if [[ ${1:0:1} != '-' ]]
-    then
-        $spath $* | less 
-    else
-        $spath $*
-    fi
-}
-alias s='echo -ne '\n'|s'
+#function s(){
+    #local spath="/usr/local/bin/s"
+    #if [[ ${1:0:1} != '-' ]]
+    #then
+        #$spath $* | less 
+    #else
+        #$spath $*
+    #fi
+#}
+#alias s='echo -ne '\n'|s'
 
-alias matcmd='matlab -nodisplay -nosplash -nojvm'
+alias matlab='/usr/local/MATLAB/R2015b/bin/matlab'
+#alias matcmd='matlab -nodisplay -nosplash -nojvm'
 alias zh='source ~petergu/Widgets/zh.sh'
 alias pg='watch -n 1 progress'
 #alias note='nvim ~petergu/Widgets/news.txt'
@@ -145,15 +146,38 @@ function note(){
 }
 alias dnote='note d'
 alias origin='wine "C:\Program Files (x86)\OriginLab\Origin2017\Origin94.exe"'
-export WINEDEBUG=-all
+#export WINEDEBUG=-all
 export LC_TIME="en_US.UTF-8"
-export XIM="fcitx"
-export XIM_PROGRAM="fcitx"
-export XMODIFIERS="@im=fcitx"
-export GTK_IM_MODULE="fcitx"
-export QT_IM_MODULE="fcitx"
-export vrc="nvim ~/.vimrc"
-export zrc="nvim ~/.zshrc"
+#export XIM="fcitx"
+#export XIM_PROGRAM="fcitx"
+#export XMODIFIERS="@im=fcitx"
+#export GTK_IM_MODULE="fcitx"
+#export QT_IM_MODULE="fcitx"
+#export http_proxy=http://xxx:xxx@192.168.2.49:8080
+alias vrc="nvim ~/.vimrc"
+alias zrc="nvim ~/.zshrc"
+alias ai="sudo apt install"
+alias arm="sudo apt remove"
+alias apg="sudo apt purge"
+alias di="sudo dpkg -i"
+alias drm="sudo dpkg -r"
+alias dpg="sudo dpkg -P"
+alias af="sudo apt -f install"
+alias afi="sudo apt-fast install"
+alias au="sudo apt update"
+alias py3="python3"
+alias py2="python2"
+alias adown="axel -n 10"
+alias batt="sudo tlp batt"
+
+#alias dwps="sudo xchroot /mnt 'su petergu -c wps'"
+#alias dwpp="sudo xchroot /mnt 'su petergu -c wpp'"
+#alias det="sudo xchroot /mnt 'su petergu -c et'"
+#alias dtim="sudo xchroot /mnt 'su petergu -c \"env WINEPREFIX=/home/petergu/.deepinwine/Deepin-TIM/ deepin-wine wineboot\"'"
+#alias dwechat="sudo xchroot /mnt 'su petergu -c \"env WINEPREFIX=/home/petergu/.deepinwine/Deepin-WeChat/ deepin-wine wineboot\"'"
+
+export TEXMACS_PATH='/home/petergu/src/TeXmacs-1.99.6-10983-i386-pc-linux-gnu'
+export PATH=$TEXMACS_PATH/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval `dircolors ~/.dircolors`

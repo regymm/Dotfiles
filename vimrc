@@ -1,6 +1,6 @@
 "this vimrc make sure that nvim is a true editor full of power,
 " and vim is a quick and light-weight editor with basic function only
-if has('nvim')
+"if has('nvim')
 	"------vim-plug begin
 	call plug#begin('~/.vim/bundle')
 	    "Plug 'gmarik/vundle'  
@@ -17,8 +17,8 @@ if has('nvim')
 	    "may be some problem
 	    Plug 'vim-airline/vim-airline'
 	    Plug 'vim-airline/vim-airline-themes'
-	    "Plug 'tpope/vim-surround'
-	    "Plug 'tpope/vim-repeat'
+	    Plug 'tpope/vim-surround'
+	    Plug 'tpope/vim-repeat'
 	    Plug 'jiangmiao/auto-pairs'
 	    Plug 'Valloric/YouCompleteMe'
 	    Plug 'scrooloose/nerdtree'
@@ -29,8 +29,10 @@ if has('nvim')
 	    "Plug 'terryma/vim-smooth-scroll'
 	    Plug 'lilydjwg/fcitx.vim'
 	    Plug 'Yggdroot/indentLine'
+	    Plug 'vim-latex/vim-latex'
+            Plug 'donRaphaco/neotex', { 'for': 'tex' }
 	    "Plug 'suan/vim-instant-markdown'
-	    "Plug '~/.fzf'
+	    Plug '~/.fzf'
 	call plug#end()
 	"------vim-plug end
   
@@ -116,9 +118,33 @@ if has('nvim')
 	"nmap <leader>rc :call Cp()<cr>
 	"nmap <leader>rr :call Run()<cr>
 	"make :terminal easier
-	tmap <c-\> <c-\><c-n>
-endif
+	func! RRun()
+		exec "w"
+		exec "!(./% > /tmp/nvimrrun.txt 2>&1 ; gnome-terminal -e \"vim /tmp/nvimrrun.txt\")&"
+	endfunc
+	func! RRunRaw()
+		exec "w"
+		exec "!(./% > /tmp/nvimrrun.txt)&"
+	endfunc
+	nnoremap <f5> :call RRun()<cr>
+	nnoremap <f6> :call RRunRaw()<cr>
+	"nnoremap <f5> :!./% | cat<cr>
+	nnoremap <leader>vl :set conceallevel=0<cr>
 
+
+	if has("nvim")
+		tmap <c-\> <c-\><c-n>
+		let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+	endif
+"endif
+
+
+
+"let &t_SI = "\<Esc>[6 q"
+"let &t_SR = "\<Esc>[4 q"
+"let &t_EI = "\<Esc>[2 q"
+
+set conceallevel=0
 
 set incsearch
 set autoindent
@@ -131,7 +157,7 @@ set clipboard+=unnamed
 set background=dark
 colorscheme solarized
 "set cursorline
-set fileencodings=utf-8,ucs-bom,gb18030,utf-16,gbk,big5,latin1
+"set fileencodings=utf-8,ucs-bom,gb18030,utf-16,gbk,big5,latin1
 filetype plugin indent on
 nnoremap <leader>h :set hlsearch!<cr>
 nnoremap <leader>sp :set spell!<cr>
@@ -141,6 +167,9 @@ nnoremap <leader>mi :set mouse=i<cr>
 nnoremap <leader>mm :set mouse=<cr>
 nnoremap <c-s> <esc>:w<cr>
 inoremap <c-s> <esc>:w<cr>i
+nnoremap vv V
+
+nnoremap <leader>vr :source ~/.vimrc<cr>
 
 inoremap <c-n> <down>
 inoremap <c-p> <up>
@@ -164,4 +193,5 @@ nnoremap <C-H> <C-W><C-H>
 "noremap <leader>rt :!./%< < %<.txt<cr>
 
 set showcmd
+syntax on
 
