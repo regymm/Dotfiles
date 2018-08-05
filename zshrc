@@ -1,3 +1,4 @@
+#!/bin/zsh
 # If you come from bash you might have to change your $PATH.
  export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -7,7 +8,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-if [[ $TERM == *256color ]] then
+if [[ $TERM == *256color ]];then
 	#ZSH_THEME="sobole"
 	#murilasso
 	#simonoff
@@ -176,7 +177,7 @@ alias batt="sudo tlp batt"
 #alias dtim="sudo xchroot /mnt 'su petergu -c \"env WINEPREFIX=/home/petergu/.deepinwine/Deepin-TIM/ deepin-wine wineboot\"'"
 #alias dwechat="sudo xchroot /mnt 'su petergu -c \"env WINEPREFIX=/home/petergu/.deepinwine/Deepin-WeChat/ deepin-wine wineboot\"'"
 
-export TEXMACS_PATH='/home/petergu/src/TeXmacs-1.99.6-10983-i386-pc-linux-gnu'
+export TEXMACS_PATH='/home/petergu/src/TeXmacs-1.99.7-11201-x86_64-pc-linux-gnu/TeXmacs'
 export PATH=$TEXMACS_PATH/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
