@@ -31,108 +31,123 @@ call plug#begin('~/.vim/bundle')
     "Plug '~/.fzf'
     Plug 'ctrlpvim/ctrlp.vim'
     "Plug 'myusuf3/numbers.vim'
+    Plug 'mbbill/undotree'
 call plug#end()
 "------vim-plug end
-  
+ 
 "------for airline
-"if !exists('g:airline_symbols')
-"let g:airline_symbols = {}
-"endif
-"let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_powerline_fonts = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#ale#enabled = 1
-"let &t_Co=256
-"let g:airline_theme='papercolor'
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
-"I don't want to use too complicated symbols
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-"very useful shortcuts
-nmap <Leader>1 <Plug>AirlineSelectTab1
-nmap <Leader>2 <Plug>AirlineSelectTab2
-nmap <Leader>3 <Plug>AirlineSelectTab3
-nmap <Leader>4 <Plug>AirlineSelectTab4
-nmap <Leader>5 <Plug>AirlineSelectTab5
-nmap <Leader>6 <Plug>AirlineSelectTab6
-nmap <Leader>7 <Plug>AirlineSelectTab7
-nmap <Leader>8 <Plug>AirlineSelectTab8
-nmap <Leader>9 <Plug>AirlineSelectTab9
-nmap <Leader>+ <Plug>AirlineSelectTabPrevTab
-nmap <Leader>- <Plug>AirlineSelectTabNextTab
+	"if !exists('g:airline_symbols')
+	"let g:airline_symbols = {}
+	"endif
+	"let g:airline#extensions#syntastic#enabled = 1
+	let g:airline#extensions#tagbar#enabled = 1
+	let g:airline_powerline_fonts = 0
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#buffer_idx_mode = 1
+	let g:airline#extensions#ale#enabled = 1
+	"let &t_Co=256
+	"let g:airline_theme='papercolor'
+	let g:airline_theme='solarized'
+	let g:airline_solarized_bg='dark'
+	"I don't want to use too complicated symbols
+	"let g:airline_left_sep = ''
+	"let g:airline_left_alt_sep = ''
+	"let g:airline_right_sep = ''
+	"let g:airline_right_alt_sep = ''
+	"very useful shortcuts
+	nmap <Leader>1 <Plug>AirlineSelectTab1
+	nmap <Leader>2 <Plug>AirlineSelectTab2
+	nmap <Leader>3 <Plug>AirlineSelectTab3
+	nmap <Leader>4 <Plug>AirlineSelectTab4
+	nmap <Leader>5 <Plug>AirlineSelectTab5
+	nmap <Leader>6 <Plug>AirlineSelectTab6
+	nmap <Leader>7 <Plug>AirlineSelectTab7
+	nmap <Leader>8 <Plug>AirlineSelectTab8
+	nmap <Leader>9 <Plug>AirlineSelectTab9
+	nmap <Leader>+ <Plug>AirlineSelectTabPrevTab
+	nmap <Leader>- <Plug>AirlineSelectTabNextTab
 "------for airline end
 
 "------for YCM
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-"let g:syntastic_c_checkers = [ 'gcc' ]
+	let g:ycm_show_diagnostics_ui = 0
+	let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+	"let g:syntastic_c_checkers = [ 'gcc' ]
 "------for YCM end
 ""------for syntactic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+	"set statusline+=%#warningmsg#
+	"set statusline+=%{SyntasticStatuslineFlag()}
+	"set statusline+=%*
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"function! ToggleErrors()
-	"let old_last_winnr = winnr('$')
-		"lclose
-	"if old_last_winnr == winnr('$')
-		"" Nothing was closed, open syntastic error location panel
-		"Errors
-	"endif
-"endfunction
-"nnoremap <Leader>ss :call ToggleErrors()<cr>
-"nnoremap <Leader>sn :lnext<cr>
-"nnoremap <Leader>sp :lprevious<cr>
-"noremap <Leader>tg :SyntasticToggleMode<cr>
+	"let g:syntastic_always_populate_loc_list = 1
+	"let g:syntastic_auto_loc_list = 1
+	"let g:syntastic_check_on_open = 1
+	"let g:syntastic_check_on_open = 1
+	"let g:syntastic_check_on_wq = 0
+	"function! ToggleErrors()
+		"let old_last_winnr = winnr('$')
+			"lclose
+		"if old_last_winnr == winnr('$')
+			"" Nothing was closed, open syntastic error location panel
+			"Errors
+		"endif
+	"endfunction
+	"nnoremap <Leader>ss :call ToggleErrors()<cr>
+	"nnoremap <Leader>sn :lnext<cr>
+	"nnoremap <Leader>sp :lprevious<cr>
+	"noremap <Leader>tg :SyntasticToggleMode<cr>
 ""------for syntactic end
 
 "------for ale
-let g:ale_linters = {
-\	'python': ['mypy', 'pyls'],
-\	'zsh': ['shellcheck', 'shell']
-\}
-"\	'vim': ['vint'],
-"\	'c': ['clang'],
-"\	'c++': ['clang'],
-nnoremap <Leader>an :ALENext<cr>
-nnoremap <Leader>ai :ALEInfo<cr>
+	let g:ale_linters = {
+	\	'python': ['mypy', 'pyls'],
+	\	'zsh': ['shellcheck', 'shell']
+	\}
+	"\	'vim': ['vint'],
+	"\	'c': ['clang'],
+	"\	'c++': ['clang'],
+	nnoremap <Leader>an :ALENext<cr>
+	nnoremap <Leader>ai :ALEInfo<cr>
 "------for ale end
 
 "------for nerdtree
-nnoremap <leader>t :NERDTreeToggle<CR>
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabFree()) | q | endif
-"auto start nerdtree when no file is opened when startup
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+	nnoremap <leader>nt :NERDTreeToggle<CR>
+	"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabFree()) | q | endif
+	"auto start nerdtree when no file is opened when startup
+	"autocmd StdinReadPre * let s:std_in=1
+	"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "------for nerdtree end
-"
+
+"------for undotree
+	nnoremap <leader>ut :UndotreeToggle<CR>
+	nnoremap <leader>uh :UndotreeHide<CR>
+	nnoremap <leader>us :UndotreeShow<CR>
+"------for undotree end
+
+"------for undotree
+	nnoremap <leader>tt :TagbarToggle<CR>
+"------for undotree end
+
 "------for multicursor
-let g:multi_cursor_use_default_mapping=0
-"I want c-n and c-p to move up and down
-let g:multi_cursor_next_key='<c-m>'
-let g:multi_cursor_prev_key='<c-l>'
+	let g:multi_cursor_use_default_mapping=0
+	"I want c-n and c-p to move up and down
+	let g:multi_cursor_next_key='<c-m>'
+	let g:multi_cursor_prev_key='<c-l>'
 "------for multicursor end
 	
 "------for ctrlp
-let g:ctrlp_map = '<Leader>f'
-let g:ctrlp_cmd = 'CtrlP'
+	let g:ctrlp_map = '<Leader>cp'
+	let g:ctrlp_cmd = 'CtrlP'
 "------for ctrlp end
 "-------------------------------above is plugin config----------------------------
+
+
 "-------------------------------below is custom config----------------------------
 "ljh said:
 "tagbar, vim-instant-markdown, spf13
 "learn vimscript the hard way
-	
+
+nmap <space> \
+
 func! CCp()
 	if &filetype ==# 'c' || &filetype ==# 'cpp'
 		exec 'w'
@@ -188,7 +203,7 @@ inoremap <c-s> <esc>:w<cr>i
 "nnoremap vv V
 
 "buggy for airline
-"nnoremap <leader>vr :source ~/.vimrc<cr>
+nnoremap <leader>vr :source ~/.vimrc<cr>
 
 "Emacs-like
 inoremap <c-n> <down>
