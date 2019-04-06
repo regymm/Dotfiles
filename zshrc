@@ -69,7 +69,7 @@ fi
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 git
-command-not-found
+#command-not-found
 zsh-syntax-highlighting
 #lighthouse
 )
@@ -109,10 +109,12 @@ export DEFAULT_USER="petergu"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="vim --noplugin"
-alias nvi="nvim --noplugin"
+#alias nvi="nvim --noplugin"
 alias ll="ls -alh"
-alias lll="exa -abghHliS"
-alias nha="~/Python/nha/main.py"
+#alias lll="exa -abghHliS"
+
+#give up save/load and enjoy real game.
+#alias nha="~/Python/nha/main.py"
 #source /home/petergu/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #function s(){
@@ -128,25 +130,26 @@ alias nha="~/Python/nha/main.py"
 
 alias matlab='/usr/local/MATLAB/R2015b/bin/matlab'
 #alias matcmd='matlab -nodisplay -nosplash -nojvm'
-alias zh='source ~petergu/Widgets/zh.sh'
+#alias zh='source ~petergu/Widgets/zh.sh'
 alias pg='watch -n 1 progress'
+#some legacy from my old good slow hdd mbp8,1
 #alias note='nvim ~petergu/Widgets/news.txt'
-function note(){
-	local notepath="/home/petergu/Widgets"
-	local notefile="news.txt"
-	local edit="nvim"
-	mv -f "$notepath/$notefile" "$notepath/.$notefile.tmp"
-	if [[ "$1" == "d" ]]
-	then
-		date > "$notepath/$notefile"
-	fi
-	cat "$notepath/.$notefile.tmp" >> "$notepath/$notefile"
-	#rm "$notepath/.$notefile.tmp"
-	$edit "$notepath/$notefile"
+#function note(){
+	#local notepath="/home/petergu/Widgets"
+	#local notefile="news.txt"
+	#local edit="nvim"
+	#mv -f "$notepath/$notefile" "$notepath/.$notefile.tmp"
+	#if [[ "$1" == "d" ]]
+	#then
+		#date > "$notepath/$notefile"
+	#fi
+	#cat "$notepath/.$notefile.tmp" >> "$notepath/$notefile"
+	##rm "$notepath/.$notefile.tmp"
+	#$edit "$notepath/$notefile"
 	
-}
-alias dnote='note d'
-alias origin='wine "C:\Program Files (x86)\OriginLab\Origin2017\Origin94.exe"'
+#}
+#alias dnote='note d'
+#alias origin='wine "C:\Program Files (x86)\OriginLab\Origin2017\Origin94.exe"'
 #export WINEDEBUG=-all
 export LC_TIME="en_US.UTF-8"
 #export XIM="fcitx"
@@ -171,6 +174,11 @@ alias py2="python2"
 alias adown="axel -n 10"
 alias batt="sudo tlp batt"
 
+alias autophy="/home/petergu/PhysicsExp/Core/autophy"
+
+alias news="vim /home/petergu/Widgets/news.txt"
+
+#a better script: ~/Widget/deepin.sh
 #alias dwps="sudo xchroot /mnt 'su petergu -c wps'"
 #alias dwpp="sudo xchroot /mnt 'su petergu -c wpp'"
 #alias det="sudo xchroot /mnt 'su petergu -c et'"
@@ -179,6 +187,11 @@ alias batt="sudo tlp batt"
 
 export TEXMACS_PATH='/home/petergu/src/TeXmacs-1.99.7-11201-x86_64-pc-linux-gnu/TeXmacs'
 export PATH=$TEXMACS_PATH/bin:$PATH
+
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+
+export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval `dircolors ~/.dircolors`

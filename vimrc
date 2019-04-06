@@ -1,6 +1,6 @@
 "------vim-plug begin
 call plug#begin('~/.vim/bundle')
-    Plug 'shougo/vimproc.vim'
+    "Plug 'shougo/vimproc.vim'
     "Plug 'gmarik/vundle'  
     "Plug 'L9'  
     Plug 'tpope/vim-fugitive'  
@@ -18,7 +18,7 @@ call plug#begin('~/.vim/bundle')
     "Plug 'scrooloose/syntastic'
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'terryma/vim-multiple-cursors'
+    "Plug 'terryma/vim-multiple-cursors'
     "Plug 'terryma/vim-expand-region'
     "Plug 'terryma/vim-smooth-scroll'
     Plug 'lilydjwg/fcitx.vim'
@@ -70,6 +70,8 @@ call plug#end()
 
 "------for YCM
 	let g:ycm_show_diagnostics_ui = 0
+	let g:ycm_complete_in_comments = 1
+	let g:ycm_autoclose_preview_window_after_insertion = 1
 	let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 	"let g:syntastic_c_checkers = [ 'gcc' ]
 "------for YCM end
@@ -100,11 +102,15 @@ call plug#end()
 "------for ale
 	let g:ale_linters = {
 	\	'python': ['mypy', 'pyls'],
-	\	'zsh': ['shellcheck', 'shell']
+	\	'zsh': ['shellcheck', 'shell'],
 	\}
+	"\	'c++': ['clang++'],
 	"\	'vim': ['vint'],
 	"\	'c': ['clang'],
-	"\	'c++': ['clang'],
+	let g:ale_python_mypy_options = '--ignore-missing-imports'
+	let g:ale_sign_column_always = 1
+	let g:ale_lint_on_text_changed = get(g:, 'ale_lint_on_text_changed', 'normal')
+	let g:ale_lint_on_insert_leave = get(g:, 'ale_lint_on_insert_leave', 0)
 	nnoremap <Leader>an :ALENext<cr>
 	nnoremap <Leader>ai :ALEInfo<cr>
 "------for ale end
@@ -146,7 +152,9 @@ call plug#end()
 "tagbar, vim-instant-markdown, spf13
 "learn vimscript the hard way
 
-nmap <space> \
+"nmap <space> \
+let mapleader=' '
+map \ <space>
 
 func! CCp()
 	if &filetype ==# 'c' || &filetype ==# 'cpp'
@@ -179,6 +187,15 @@ nnoremap <f6> :call RRunRaw()<cr>
 "for tex
 nnoremap <leader>vl :set conceallevel=0<cr>
 
+"Binary editing
+func! ToBin()
+	exec '%!xxd'
+endfunc
+func! RevToBin()
+	exec '%!xxd -r'
+endfunc
+command Bin call ToBin()
+command Rbin call RevToBin()
 
 "nvim cursor shape config and terminal mode config
 if has('nvim')
@@ -197,7 +214,8 @@ nnoremap <leader>ma :set mouse=a<cr>
 nnoremap <leader>mi :set mouse=i<cr>
 nnoremap <leader>mm :set mouse=<cr>
 nnoremap <c-s> <esc>:w<cr>
-inoremap <c-s> <esc>:w<cr>i
+"inoremap <c-s> <esc>:w<cr>i
+inoremap <c-s> <c-o>:w<cr>
 
 "I don't used to it
 "nnoremap vv V
@@ -235,7 +253,7 @@ set incsearch
 set autoindent
 set cindent
 set number
-set mouse=i
+set mouse=a
 set scrolloff=5
 "set nocompatible
 set clipboard+=unnamed
@@ -243,6 +261,7 @@ set background=dark
 colorscheme solarized
 set cursorline
 set fileencodings=utf-8,ucs-bom,gb18030,utf-16,gbk,big5,latin1
+set ignorecase
 "set showcmd
 syntax on
 filetype plugin indent on

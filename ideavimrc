@@ -1,0 +1,18 @@
+"vimrc for idea IDE vim emulator
+
+set incsearch
+"set hlsearch
+set scrolloff=3
+set clipboard+=unnamed
+set cursorline
+set ignorecase
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <leader>h :set hlsearch!<cr>
+nnoremap <leader>sp :set spell!<cr>
+nnoremap <leader>ig :set ignorecase!<cr>
+nnoremap <leader>ma :set mouse=a<cr>
+nnoremap <leader>mi :set mouse=i<cr>
+nnoremap <leader>mm :set mouse=<cr>
