@@ -12,7 +12,8 @@ if [[ $TERM == *256color ]];then
 	#ZSH_THEME="sobole"
 	#murilasso
 	#simonoff
-	ZSH_THEME="agnoster"
+	ZSH_THEME="robbyrussell"
+	#ZSH_THEME="agnoster"
 	#ZSH_THEME="random"
 else
 	ZSH_THEME="robbyrussell"
@@ -128,7 +129,7 @@ alias ll="ls -alh"
 #}
 #alias s='echo -ne '\n'|s'
 
-alias matlab='/usr/local/MATLAB/R2015b/bin/matlab'
+#alias matlab='/usr/local/MATLAB/R2015b/bin/matlab'
 #alias matcmd='matlab -nodisplay -nosplash -nojvm'
 #alias zh='source ~petergu/Widgets/zh.sh'
 alias pg='watch -n 1 progress'
@@ -160,15 +161,18 @@ export LC_TIME="en_US.UTF-8"
 #export http_proxy=http://xxx:xxx@192.168.2.49:8080
 alias vrc="nvim ~/.vimrc"
 alias zrc="nvim ~/.zshrc"
-alias ai="sudo apt install"
-alias arm="sudo apt remove"
-alias apg="sudo apt purge"
-alias di="sudo dpkg -i"
-alias drm="sudo dpkg -r"
-alias dpg="sudo dpkg -P"
-alias af="sudo apt -f install"
-alias afi="sudo apt-fast install"
-alias au="sudo apt update"
+#alias ai="sudo apt install"
+#alias arm="sudo apt remove"
+#alias apg="sudo apt purge"
+#alias di="sudo dpkg -i"
+#alias drm="sudo dpkg -r"
+#alias dpg="sudo dpkg -P"
+#alias af="sudo apt -f install"
+#alias afi="sudo apt-fast install"
+#alias au="sudo apt update"
+alias pi="sudo pacman -S"
+alias prm="sudo pacman -R"
+alias ppi="yay -S"
 alias py3="python3"
 alias py2="python2"
 alias adown="axel -n 10"
@@ -185,13 +189,42 @@ alias news="vim /home/petergu/Widgets/news.txt"
 #alias dtim="sudo xchroot /mnt 'su petergu -c \"env WINEPREFIX=/home/petergu/.deepinwine/Deepin-TIM/ deepin-wine wineboot\"'"
 #alias dwechat="sudo xchroot /mnt 'su petergu -c \"env WINEPREFIX=/home/petergu/.deepinwine/Deepin-WeChat/ deepin-wine wineboot\"'"
 
-export TEXMACS_PATH='/home/petergu/src/TeXmacs-1.99.7-11201-x86_64-pc-linux-gnu/TeXmacs'
-export PATH=$TEXMACS_PATH/bin:$PATH
+#export TEXMACS_PATH='/home/petergu/src/TeXmacs-1.99.7-11201-x86_64-pc-linux-gnu/TeXmacs'
+#export PATH=$TEXMACS_PATH/bin:$PATH
 
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
+#export GOROOT=/usr/local/go
+#export PATH=$PATH:$GOROOT/bin
 
-export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH
+
+export PATH=$PATH:~/.gem/ruby/2.6.0/bin
+
+function light()
+{
+	export http_proxy="http://:@:29979/"; export https_proxy=$http_proxy;
+	exec zsh
+}
+function ssr()
+{
+	export http_proxy="http://127.0.0.1:12333"
+	export https_proxy="http://127.0.0.1:12333"
+	exec zsh
+}
+function v2()
+{
+	export http_proxy="http://127.0.0.1:7890"
+	export https_proxy="http://127.0.0.1:7890"
+	exec zsh
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval `dircolors ~/.dircolors`
+# to avoid confusion between wsl and VM
+# export PS1='${ret_status} SSH%{$fg[cyan]%}:%c%{$reset_color%} $(git_prompt_info)'
+
+# LLVM
+#export PATH=/run/media/petergu/8891ca7c-3585-4e2f-a13f-61d83f8c00f7/petergu/llvm-install/bin:$PATH
+export PATH=/home/petergu/MyHome/src/llvm-install/bin:$PATH
+
+
+eval $(thefuck --alias)
