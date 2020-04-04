@@ -16,3 +16,4 @@ nnoremap <leader>ig :set ignorecase!<cr>
 nnoremap <leader>ma :set mouse=a<cr>
 nnoremap <leader>mi :set mouse=i<cr>
 nnoremap <leader>mm :set mouse=<cr>
+set ideajoin

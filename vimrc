@@ -10,7 +10,7 @@ filetype on
 filetype detect
 call plug#begin('~/.vim/bundle')
 	Plug 'rhysd/vim-llvm'
-	Plug 'shougo/vimproc.vim'
+	"Plug 'shougo/vimproc.vim'
 	"Plug 'gmarik/vundle'  
 	"Plug 'L9'  
 	Plug 'tpope/vim-fugitive'  
@@ -45,8 +45,11 @@ call plug#begin('~/.vim/bundle')
 	Plug 'altercation/vim-colors-solarized'
 	"Plug 'WolfgangMehner/c-support'
 	Plug 'alpertuna/vim-header'
+	Plug 'pseewald/vim-anyfold'
+	Plug 'Shirk/vim-gas'
+	Plug 'harenome/vim-mipssyntax'
 	"if (&filetype=='cpp' || &filetype=='c')
-	if (&filetype=='cpp')
+	if (&filetype=='c')
 		" Intellisense for vim
 		" Use release branch
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -85,7 +88,7 @@ call plug#end()
 	"let &t_Co=256
 	let g:airline_theme='papercolor'
 	"let g:airline_theme='solarized'
-	let g:airline_solarized_bg='dark'
+	"let g:airline_solarized_bg='dark'
 	"I don't want to use too complicated symbols
 	"let g:airline_left_sep = ''
 	"let g:airline_left_alt_sep = ''
@@ -201,6 +204,23 @@ map <F4> :AddHeader<CR>
 
 nmap <space> \
 
+""""""""""""""
+"My plugin: nethack like 8 direction movement
+"func! NH8()
+	"nmap b hj
+	"nmap n lj
+	"nmap yy hkhk
+	"nmap u lk
+"endfunction
+
+"func! NoNH8()
+	"nunmap b
+	"nunmap n
+	"nunmap y 
+	"nunmap u
+"endfunction
+
+
 "func! CCp()
 	"if &filetype ==# 'c' || &filetype ==# 'cpp'
 		"exec 'w'
@@ -292,7 +312,13 @@ nnoremap <C-H> <C-W><C-H>
 "I don't know why, but maybe I need this.
 scriptencoding cp932
 
-set conceallevel=0
+autocmd Filetype * AnyFoldActivate
+set foldmethod=indent
+set foldnestmax=10
+"set nofoldenable
+set foldlevel=99
+"set conceallevel=0
+set ignorecase
 set incsearch
 set autoindent
 set cindent
@@ -303,12 +329,12 @@ set scrolloff=5
 set clipboard+=unnamed
 set background=dark
 colorscheme solarized
-set cursorline
+"set cursorline
 set fileencodings=utf-8,ucs-bom,gb18030,utf-16,gbk,big5,latin1
 "set showcmd
 syntax on
 filetype plugin indent on
-set guifont=Consolas:h14
+"set guifont=Consolas:h14
 set encoding=utf-8
 
 if exists("has_coc")
